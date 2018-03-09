@@ -1,0 +1,5 @@
+Raport I
+
+Planujê zrobiæ stronê iternetow¹ na temat kuchni.
+Bêd¹ przepisy, polecane restauracje w okolicy i tym podobne, planujê dodaæ mo¿liwoœæ komentowania.
+Wykorzystam framework django. :)
