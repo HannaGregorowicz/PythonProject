@@ -15,3 +15,9 @@ Z kolei jeśli chodzi o restauracje w okolicy - "okolicą" będzie najbliższe 2
 Raport II
 
 Utworzyłam pliki projektu w Django. Zrobiłam już model bazy danych dla przepisów, znajduje się on w pliku models.py i przekształciłam go na bazę możliwą do obsługi w sqlite3, dodałam też do niej dwa przykładowe obiekty na próbę. W tej chwili zajmuję się pierwszą podstroną (/recipes - blog z przepisami). Na tą chwilę powstało już odwołanie do niej w pliku urls.py. W najbliższym czasie będę się zajmować wstępnym zarysem front-endu oraz wykorzystaniem tej bazy danych bezpośrednio na stronie. Na tą chwilę założenia projektu pozostają niezmienne.
+
+
+Raport III
+
+Od prototypu utworzony został cały system rejestracji nowych użytkowników oraz logowania już istniejących. Użytkownicy mają również możliwość dodawania własnych przepisów do bazy danych. W chwili obecnej zostały mi do końca jedynie opcje dodawania komentarzy, wyszukiwania słów kluczowych na stronie, opcjonalnie, jeżeli wystarczy czasu, system oceniania przepisów w skali 1-10, a także doszlifowanie front-endu i dodanie większej liczby przepisów do bazy danych, żeby strona nie była "pusta". :)
+Postanowiłam zrezygnować z google api, ponieważ nie do końca komponowałoby się to z treścią strony, a także częściowo z braku czasu. Zamiast tego postanowiłam pójść bardziej w stronę społeczności jak właśnie wyżej wymienione komentarze, oceny i tym podobne.
