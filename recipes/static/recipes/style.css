@@ -1,0 +1,22 @@
+body
+{
+    background: white url('images/background.png');
+}
+
+.navbar
+{
+    font-family: 'Amatic SC';
+    font-size: 150%;
+}
+
+.navbar-brand
+{
+    font-family: 'Amatic SC';
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.det
+{
+    font-family: "Montserrat";
+}

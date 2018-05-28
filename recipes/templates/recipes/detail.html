@@ -1,0 +1,59 @@
+{% extends 'recipes/base.html' %}
+{% block title %} {{ recipe }} {% endblock %}
+
+{% block body %}
+
+
+<div class="container-fluid detail-container">
+
+    <div class="row">
+
+        <!-- Left Recipe Info -->
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{% url 'recipes:detail' recipe.id %}">
+                        {% if recipe.photo %}
+                            <img src="{{ recipe.photo.url }}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+                    <h1 class="det">{{ recipe.name }} <br> <small>{{ recipe.time }} minut</small></h1>
+                    <h1 class="det"><small>Poziom trudności: {{ recipe.difficulty }}/10</small></h1>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Recipe Info -->
+        <div class="col-sm-8 col-md-9">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 class="det">Składniki:</h3>
+                    <ul>
+                    {% for ingridient in recipe.splitingr %}
+                    <li class="det">{{ ingridient }}</li>
+                    {% endfor %}
+                    </ul>
+
+                    <h3 class="det">Sposób przygotowania:</h3>
+
+                    {% if error_message %}
+                        <p class="det"><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+
+                    <p class="det">{{ recipe.description }}</p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
