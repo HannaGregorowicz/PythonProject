@@ -20,10 +20,13 @@ urlpatterns = [
     # /recipes/add/
     url(r'^add/$', views.RecipeCreate.as_view(), name='add'),
 
+    # /recipes/comment/
+    url(r'^comment/$', views.CommentCreate.as_view(), name='comment'),
+
     # /recipes/update/id/
     url(r'update/(?P<pk>[0-9]+)/$', views.RecipeUpdate.as_view(), name='update'),
 
-    # /recipes/add
+    # /recipes/delete/
     url(r'delete/(?P<pk>[0-9]+)/$', views.RecipeDelete.as_view(), name='delete'),
 
 ]

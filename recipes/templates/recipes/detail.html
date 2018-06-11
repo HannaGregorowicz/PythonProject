@@ -49,7 +49,25 @@
 
                 </div>
             </div>
+        <div class="panel panel-default">
+                <div class="panel-body det">
+                    {% if user.is_active %}
+                    <p class="det"> <a href="{% url 'recipes:comment' %}?recipe={{ recipe.id }}">Skomentuj ten przepis!</a> </p>
+                    {% else %}
+                    <p class="det"><a href="{% url 'recipes:login_user' %}">Zaloguj się</a> by skomentować!</p>
+                    {% endif %}
 
+                    <h3 class="det">Komentarze:</h3>
+                {% for comment in recipe.comment_set.all %}
+
+                    <blockquote>{{ comment.content }}
+                    <footer>{{ comment.user }}<p>         </p>{{ comment.time }} <br></footer>
+                    </blockquote>
+
+                    <br>
+                    {% endfor %}
+
+                </div></div>
         </div>
 
     </div>

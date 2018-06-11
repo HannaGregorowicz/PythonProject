@@ -1,12 +1,13 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views import generic
 from django.views.generic import View
-from .models import Recipe
+from .models import Recipe, Comment
 from .forms import UserForm
-from django.http import JsonResponse
+from django import forms
+
 
 class IndexView(generic.ListView):
     template_name = 'recipes/index.html'
@@ -21,6 +22,36 @@ class DetailView(generic.DetailView):
 class RecipeCreate(CreateView):
     model = Recipe
     fields = ['name', 'time', 'difficulty', 'ingridients', 'description', 'photo']
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.object.user = self.request.user
+        self.object.save()
+        return response
+
+class CommentCreate(CreateView):
+    model = Comment
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial["recipe"] = self.request.GET.get("recipe", None)
+        return initial
+
+    fields = ['recipe', 'content']
+
+    def get_form(self, form_class):
+        form = super().get_form(form_class)
+        form.fields['recipe'].widget = forms.HiddenInput()
+        return form
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.object.user = self.request.user
+        self.object.save()
+        return response
+
+    def get_success_url(self):
+        return reverse_lazy('recipes:index')
 
 class RecipeUpdate(UpdateView):
     model = Recipe
@@ -84,3 +115,4 @@ def logout_user(request):
         "form": form,
     }
     return render(request, 'recipes/login.html', context)
+
