@@ -3,7 +3,7 @@
 
 {% block body %}
 
-
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <div class="container-fluid detail-container">
 
     <div class="row">
@@ -19,7 +19,7 @@
                             <h3>No image to display</h3>
                         {% endif %}
                     </a>
-                    <h1 class="det">{{ recipe.name }} <br> <small>{{ recipe.time }} minut</small></h1>
+                    <h1 class="det">{{ recipe.name }} <br> <small>{{ recipe.user }}<br>{{ recipe.time }} minut</small></h1>
                     <h1 class="det"><small>Poziom trudności: {{ recipe.difficulty }}/10</small></h1>
 
 
@@ -45,7 +45,7 @@
                         <p class="det"><strong>{{ error_message }}</strong></p>
                     {% endif %}
 
-                    <p class="det">{{ recipe.description }}</p>
+                    <p font-family="Montserrat">{{ recipe.description|safe|linebreaks }}</p>
 
                 </div>
             </div>

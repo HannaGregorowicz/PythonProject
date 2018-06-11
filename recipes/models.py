@@ -1,12 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import Permission, User
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
     time = models.IntegerField()
     difficulty = models.FloatField()
-    ingridients = models.CharField(max_length=1000)
+    ingridients = models.TextField()
     description = models.TextField()
     photo = models.FileField()
     is_favorite = models.BooleanField(default=False)
